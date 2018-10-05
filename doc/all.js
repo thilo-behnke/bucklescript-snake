@@ -238,10 +238,114 @@ var MyBundle = (function (exports) {
   }
   /* No side effect */
 
+  function __(tag, block) {
+    block.tag = tag;
+    return block;
+  }
   /* No side effect */
 
   /* No side effect */
 
+  var for_in = function (o,foo){
+          for (var x in o) { foo(x); }
+        };
+
+  function caml_equal(_a, _b) {
+    while(true) {
+      var b = _b;
+      var a = _a;
+      if (a === b) {
+        return true;
+      } else {
+        var a_type = typeof a;
+        if (a_type === "string" || a_type === "number" || a_type === "boolean" || a_type === "undefined" || a === null) {
+          return false;
+        } else {
+          var b_type = typeof b;
+          if (a_type === "function" || b_type === "function") {
+            throw [
+                  invalid_argument,
+                  "equal: functional value"
+                ];
+          } else if (b_type === "number" || b_type === "undefined" || b === null) {
+            return false;
+          } else {
+            var tag_a = a.tag | 0;
+            var tag_b = b.tag | 0;
+            if (tag_a === 250) {
+              _a = a[0];
+              continue ;
+            } else if (tag_b === 250) {
+              _b = b[0];
+              continue ;
+            } else if (tag_a === 248) {
+              return a[1] === b[1];
+            } else if (tag_a === 251) {
+              throw [
+                    invalid_argument,
+                    "equal: abstract value"
+                  ];
+            } else if (tag_a !== tag_b) {
+              return false;
+            } else if (tag_a === 256) {
+              return a[1] === b[1];
+            } else {
+              var len_a = a.length | 0;
+              var len_b = b.length | 0;
+              if (len_a === len_b) {
+                if (Array.isArray(a)) {
+                  var a$1 = a;
+                  var b$1 = b;
+                  var _i = 0;
+                  var same_length = len_a;
+                  while(true) {
+                    var i = _i;
+                    if (i === same_length) {
+                      return true;
+                    } else if (caml_equal(a$1[i], b$1[i])) {
+                      _i = i + 1 | 0;
+                      continue ;
+                    } else {
+                      return false;
+                    }
+                  }              } else {
+                  var a$2 = a;
+                  var b$2 = b;
+                  var result = /* record */[/* contents */true];
+                  var do_key_a = (function(b$2,result){
+                  return function do_key_a(key) {
+                    if (b$2.hasOwnProperty(key)) {
+                      return 0;
+                    } else {
+                      result[0] = false;
+                      return /* () */0;
+                    }
+                  }
+                  }(b$2,result));
+                  var do_key_b = (function(a$2,b$2,result){
+                  return function do_key_b(key) {
+                    if (!a$2.hasOwnProperty(key) || !caml_equal(b$2[key], a$2[key])) {
+                      result[0] = false;
+                      return /* () */0;
+                    } else {
+                      return 0;
+                    }
+                  }
+                  }(a$2,b$2,result));
+                  for_in(a$2, do_key_a);
+                  if (result[0]) {
+                    for_in(b$2, do_key_b);
+                  }
+                  return result[0];
+                }
+              } else {
+                return false;
+              }
+            }
+          }
+        }
+      }
+    }}
   /* No side effect */
 
   /* node_std_output Not a pure module */
@@ -338,17 +442,6 @@ var MyBundle = (function (exports) {
     }
   }
 
-  function tl(param) {
-    if (param) {
-      return param[1];
-    } else {
-      throw [
-            failure,
-            "tl"
-          ];
-    }
-  }
-
   function rev_append(_l1, _l2) {
     while(true) {
       var l2 = _l2;
@@ -365,10 +458,6 @@ var MyBundle = (function (exports) {
       }
     }}
 
-  function rev(l) {
-    return rev_append(l, /* [] */0);
-  }
-
   function map(f, param) {
     if (param) {
       var r = _1(f, param[0]);
@@ -378,6 +467,72 @@ var MyBundle = (function (exports) {
             ];
     } else {
       return /* [] */0;
+    }
+  }
+
+  function fold_left(f, _accu, _l) {
+    while(true) {
+      var l = _l;
+      var accu = _accu;
+      if (l) {
+        _l = l[1];
+        _accu = _2(f, accu, l[0]);
+        continue ;
+      } else {
+        return accu;
+      }
+    }}
+
+  function find_all(p) {
+    return (function (param) {
+        var _accu = /* [] */0;
+        var _param = param;
+        while(true) {
+          var param$1 = _param;
+          var accu = _accu;
+          if (param$1) {
+            var l = param$1[1];
+            var x = param$1[0];
+            if (_1(p, x)) {
+              _param = l;
+              _accu = /* :: */[
+                x,
+                accu
+              ];
+              continue ;
+            } else {
+              _param = l;
+              continue ;
+            }
+          } else {
+            return rev_append(accu, /* [] */0);
+          }
+        }    });
+  }
+
+  var filter = find_all;
+  /* No side effect */
+
+  var undefinedHeader = /* array */[];
+
+  function some(x) {
+    if (x === undefined) {
+      var block = /* tuple */[
+        undefinedHeader,
+        0
+      ];
+      block.tag = 256;
+      return block;
+    } else if (x !== null && x[0] === undefinedHeader) {
+      var nid = x[1] + 1 | 0;
+      var block$1 = /* tuple */[
+        undefinedHeader,
+        nid
+      ];
+      block$1.tag = 256;
+      return block$1;
+    } else {
+      return x;
     }
   }
   /* No side effect */
@@ -408,13 +563,18 @@ var MyBundle = (function (exports) {
     return a - b | 0;
   }
 
+  function sum(a, b) {
+    return a + b | 0;
+  }
+
   var Utils = /* module */[
     /* add */add$1,
     /* inc */inc,
     /* dec */dec,
     /* double */$$double,
     /* incDouble */incDouble,
-    /* sub */sub$1
+    /* sub */sub$1,
+    /* sum */sum
   ];
 
   function map$1(f, param) {
@@ -457,30 +617,387 @@ var MyBundle = (function (exports) {
     }}
 
   function range(n) {
-    var inner = function (_acc, _i) {
-      while(true) {
-        var i = _i;
-        var acc = _acc;
-        if (i !== 0) {
-          _i = i - 1 | 0;
-          _acc = /* :: */[
-            i,
-            acc
-          ];
-          continue ;
+    var _acc = /* [] */0;
+    var _i = 0;
+    while(true) {
+      var i = _i;
+      var acc = _acc;
+      var match = i < n;
+      if (match) {
+        _i = i + 1 | 0;
+        _acc = /* :: */[
+          i,
+          acc
+        ];
+        continue ;
+      } else {
+        return acc;
+      }
+    }}
+
+  function find_opt(pred, _param) {
+    while(true) {
+      var param = _param;
+      if (param) {
+        var x = param[0];
+        if (_1(pred, x)) {
+          return some(x);
         } else {
-          return acc;
+          _param = param[1];
+          continue ;
         }
-      }  };
-    return rev(inner(/* [] */0, n));
-  }
+      } else {
+        return undefined;
+      }
+    }}
 
   var MyList = /* module */[
     /* map */map$1,
     /* forEach */forEach,
     /* forEachi */forEachi,
-    /* range */range
+    /* range */range,
+    /* find_opt */find_opt
   ];
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT VERSION 4.0.6, PLEASE EDIT WITH CARE
+
+  function init(n, d, ml) {
+    return map((function (i) {
+                  return /* tuple */[
+                          /* tuple */[
+                            100 + imul(i, ml) | 0,
+                            100
+                          ],
+                          d,
+                          false
+                        ];
+                }), MyList[/* range */3](n));
+  }
+
+  function head(b) {
+    var match = hd(b);
+    var match$1 = match[0];
+    return /* tuple */[
+            match$1[0],
+            match$1[1]
+          ];
+  }
+
+  function move(b, d, ml, param) {
+    var calcNextPos = function (n, param, param$1, param$2) {
+      var y = param$1[1];
+      var x = param$1[0];
+      var max_y = param[1];
+      var max_x = param[0];
+      switch (param$2) {
+        case 0 : 
+            var new_y = y > 0 ? y - n | 0 : max_y;
+            return /* tuple */[
+                    x,
+                    new_y
+                  ];
+        case 1 : 
+            var new_x = x < max_x ? x + n | 0 : 0;
+            return /* tuple */[
+                    new_x,
+                    y
+                  ];
+        case 2 : 
+            var new_y$1 = y < max_y ? y + n | 0 : 0;
+            return /* tuple */[
+                    x,
+                    new_y$1
+                  ];
+        case 3 : 
+            var new_x$1 = x > 0 ? x - n | 0 : max_x;
+            return /* tuple */[
+                    new_x$1,
+                    y
+                  ];
+        
+      }
+    };
+    var match = hd(b);
+    var match$1 = match[0];
+    var h$prime_000 = calcNextPos(ml, /* tuple */[
+          param[0],
+          param[1]
+        ], /* tuple */[
+          match$1[0],
+          match$1[1]
+        ], d);
+    var h$prime = /* tuple */[
+      h$prime_000,
+      d,
+      false
+    ];
+    var inner = function (m, l) {
+      if (l) {
+        return /* :: */[
+                m,
+                inner(l[0], l[1])
+              ];
+      } else if (m[2]) {
+        return /* :: */[
+                /* tuple */[
+                  m[0],
+                  m[1],
+                  false
+                ],
+                /* [] */0
+              ];
+      } else {
+        return /* [] */0;
+      }
+    };
+    return inner(h$prime, b);
+  }
+
+  function eat(b) {
+    if (b) {
+      var h = b[0];
+      return /* :: */[
+              /* tuple */[
+                h[0],
+                h[1],
+                true
+              ],
+              b[1]
+            ];
+    } else {
+      throw [
+            match_failure,
+            /* tuple */[
+              "Actor.ml",
+              45,
+              20
+            ]
+          ];
+    }
+  }
+
+  var length$1 = length;
+
+  function checkCollision(b, param, mw) {
+    var objY = param[1];
+    var objX = param[0];
+    var match = hd(b);
+    var d = match[1];
+    var match$1 = match[0];
+    var y = match$1[1];
+    var x = match$1[0];
+    var exit$$1 = 0;
+    if (d !== 1 && d < 3) {
+      if (abs(x - objX | 0) <= mw) {
+        return abs(y - objY | 0) < mw;
+      } else {
+        return false;
+      }
+    } else {
+      exit$$1 = 1;
+    }
+    if (exit$$1 === 1) {
+      if (abs(x - objX | 0) < mw) {
+        return abs(y - objY | 0) <= mw;
+      } else {
+        return false;
+      }
+    }
+    
+  }
+
+  function checkSelfCollision(b) {
+    if (b) {
+      var match = b[0][0];
+      var y = match[1];
+      var x = match[0];
+      return MyList[/* find_opt */4]((function (param) {
+                    var match = param[0];
+                    if (caml_equal(x, match[0])) {
+                      return caml_equal(y, match[1]);
+                    } else {
+                      return false;
+                    }
+                  }), b[1]) !== undefined;
+    } else {
+      throw [
+            match_failure,
+            /* tuple */[
+              "Actor.ml",
+              53,
+              10
+            ]
+          ];
+    }
+  }
+
+  function getData(b) {
+    return b;
+  }
+
+  var Snake = /* module */[
+    /* init */init,
+    /* head */head,
+    /* move */move,
+    /* eat */eat,
+    /* length */length$1,
+    /* checkCollision */checkCollision,
+    /* checkSelfCollision */checkSelfCollision,
+    /* getData */getData
+  ];
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT VERSION 4.0.6, PLEASE EDIT WITH CARE
+
+  function map_eaten_to_score(enemies) {
+    return map((function (x) {
+                  if (typeof x === "number") {
+                    return 0;
+                  } else if (x.tag) {
+                    return 50;
+                  } else {
+                    return 10;
+                  }
+                }), enemies);
+  }
+
+  function sum_score(enemies) {
+    return fold_left(Utils[/* sum */6], 0, map_eaten_to_score(enemies));
+  }
+
+  var Score = /* module */[
+    /* map_eaten_to_score */map_eaten_to_score,
+    /* sum_score */sum_score
+  ];
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT VERSION 4.0.6, PLEASE EDIT WITH CARE
+
+  function load_canvas(canvas_id) {
+    var match = document.getElementById(canvas_id);
+    if (match !== null) {
+      return match;
+    } else {
+      console.log("cant find canvas " + (canvas_id + " \n"));
+      return failwith("fail");
+    }
+  }
+
+  function clear_canvas(canvas) {
+    var context = canvas.getContext("2d");
+    var cwidth = canvas.width;
+    var cheight = canvas.height;
+    context.clearRect(0, 0, cwidth, cheight);
+    return /* () */0;
+  }
+
+  function draw_actor(canvas, snake, memberLength) {
+    var context = canvas.getContext("2d");
+    return MyList[/* forEachi */2]((function (param, i) {
+                  var match = param[0];
+                  var y = match[1];
+                  var x = match[0];
+                  var match$1;
+                  switch (param[1]) {
+                    case 0 : 
+                        match$1 = /* tuple */[
+                          x,
+                          y + memberLength | 0
+                        ];
+                        break;
+                    case 1 : 
+                        match$1 = /* tuple */[
+                          x - memberLength | 0,
+                          y
+                        ];
+                        break;
+                    case 2 : 
+                        match$1 = /* tuple */[
+                          x,
+                          y - memberLength | 0
+                        ];
+                        break;
+                    case 3 : 
+                        match$1 = /* tuple */[
+                          x + memberLength | 0,
+                          y
+                        ];
+                        break;
+                    
+                  }
+                  var match$2 = i % 3;
+                  var color;
+                  if (match$2 > 2 || match$2 < 0) {
+                    color = "#ffff00";
+                  } else {
+                    switch (match$2) {
+                      case 0 : 
+                          color = "#ff0066";
+                          break;
+                      case 1 : 
+                          color = "#0066ff";
+                          break;
+                      case 2 : 
+                          color = "#00cc00";
+                          break;
+                      
+                    }
+                  }
+                  var lineWidth = param[2] ? memberLength + 3 | 0 : memberLength;
+                  context.beginPath();
+                  context.strokeStyle = color;
+                  context.lineWidth = lineWidth;
+                  context.moveTo(match$1[0], match$1[1]);
+                  context.lineTo(x, y);
+                  context.stroke();
+                  return context.closePath();
+                }), Snake[/* getData */7](snake));
+  }
+
+  function draw_prey(canvas, prey) {
+    if (typeof prey === "number") {
+      return /* () */0;
+    } else {
+      var match = prey[0][/* pos */0];
+      var y = match[1];
+      var x = match[0];
+      var context = canvas.getContext("2d");
+      var color;
+      color = typeof prey === "number" ? "#ffff00" : (
+          prey.tag ? "#ff0066" : "#000000"
+        );
+      context.beginPath();
+      context.strokeStyle = color;
+      context.lineWidth = 6;
+      context.moveTo(x - 6 | 0, y);
+      context.lineTo(x, y);
+      context.stroke();
+      return context.closePath();
+    }
+  }
+
+  function draw_debug(canvas, game) {
+    var context = canvas.getContext("2d");
+    context.strokeStyle = "#ff0066";
+    context.lineWidth = 3;
+    context.rect(300, 0, 150, 100);
+    context.stroke();
+    var bodLength = Snake[/* length */4](game[/* snake */2]);
+    var actorStr = "Body Length: " + String(bodLength);
+    context.fillText(actorStr, 310, 10);
+    var scoreStr = "Score: " + String(Score[/* sum_score */1](game[/* eaten */1]));
+    context.fillText(scoreStr, 310, 40);
+    return /* () */0;
+  }
+
+  function draw_game(canvas, game, memberLength) {
+    clear_canvas(canvas);
+    draw_actor(canvas, game[/* snake */2], memberLength);
+    draw_prey(canvas, game[/* spawn */3]);
+    draw_debug(canvas, game);
+    return /* () */0;
+  }
   /* No side effect */
 
   var $$Error = create("Js_exn.Error");
@@ -788,7 +1305,7 @@ var MyBundle = (function (exports) {
     return $$int($$default, bound);
   }
 
-  function init$3(seed) {
+  function init$4(seed) {
     return full_init($$default, /* array */[seed]);
   }
   /* No side effect */
@@ -830,349 +1347,157 @@ var MyBundle = (function (exports) {
     }
   }
 
-  function calcNextPos(n, param, param$1, param$2) {
-    var y = param$1[1];
-    var x = param$1[0];
-    var max_y = param[1];
-    var max_x = param[0];
-    switch (param$2) {
-      case 0 : 
-          var new_y = y > 0 ? y - n | 0 : max_y;
-          return /* tuple */[
-                  x,
-                  new_y
-                ];
-      case 1 : 
-          var new_x = x < max_x ? x + n | 0 : 0;
-          return /* tuple */[
-                  new_x,
-                  y
-                ];
-      case 2 : 
-          var new_y$1 = y < max_y ? y + n | 0 : 0;
-          return /* tuple */[
-                  x,
-                  new_y$1
-                ];
-      case 3 : 
-          var new_x$1 = x > 0 ? x - n | 0 : max_x;
-          return /* tuple */[
-                  new_x$1,
-                  y
-                ];
-      
-    }
-  }
-
-  function updateBody(newMember, body) {
-    var inner = function (m, l) {
-      if (l) {
-        return /* :: */[
-                m,
-                inner(l[0], l[1])
-              ];
-      } else if (m[2]) {
-        return /* :: */[
-                /* tuple */[
-                  m[0],
-                  m[1],
-                  false
-                ],
-                /* [] */0
-              ];
-      } else {
-        return /* [] */0;
-      }
-    };
-    return inner(newMember, body);
-  }
-
   function spawnRandom(param, param$1, seed) {
-    init$3(seed);
+    init$4(seed);
     return /* tuple */[
             $$int$1(param[1]) + param[0] | 0,
             $$int$1(param$1[1]) + param$1[0] | 0
+          ];
+  }
+
+  function updateGame(t, oldGame, direction, constants) {
+    var memberWidth = constants[/* memberWidth */3];
+    var windowWidth = constants[/* windowWidth */1];
+    var windowHeight = constants[/* windowHeight */0];
+    var spawnPrey = function (seed) {
+      return spawnRandom(/* tuple */[
+                  (memberWidth << 2),
+                  windowWidth - (memberWidth << 2) | 0
+                ], /* tuple */[
+                  (memberWidth << 2),
+                  windowHeight - (memberWidth << 2) | 0
+                ], seed);
+    };
+    var getNormalEaten = function (eaten) {
+      return length(filter((function (x) {
+                          if (typeof x === "number" || x.tag) {
+                            return false;
+                          } else {
+                            return true;
+                          }
+                        }))(eaten));
+    };
+    var spawn = oldGame[/* spawn */3];
+    var eaten = oldGame[/* eaten */1];
+    var updatedSnake = Snake[/* move */2](oldGame[/* snake */2], direction, constants[/* memberLength */2], /* tuple */[
+          windowWidth,
+          windowHeight
+        ]);
+    var match;
+    if (typeof spawn === "number") {
+      var match$1 = spawnPrey(t | 0);
+      var y = match$1[1];
+      var x = match$1[0];
+      var normalEaten = getNormalEaten(eaten);
+      var match$2 = normalEaten > 0 && normalEaten % 10 === 0;
+      match = match$2 ? /* tuple */[
+          /* Special */__(1, [/* record */[
+                /* pos : tuple */[
+                  x,
+                  y
+                ],
+                /* symbol */"+"
+              ]]),
+          /* None */0
+        ] : /* tuple */[
+          /* Normal */__(0, [/* record */[
+                /* pos : tuple */[
+                  x,
+                  y
+                ],
+                /* symbol */"*"
+              ]]),
+          /* None */0
+        ];
+    } else {
+      var match$3 = Snake[/* checkCollision */5](updatedSnake, spawn[0][/* pos */0], memberWidth);
+      match = match$3 ? /* tuple */[
+          /* None */0,
+          spawn
+        ] : /* tuple */[
+          spawn,
+          /* None */0
+        ];
+    }
+    var collided = match[1];
+    var newSnake = typeof collided === "number" ? updatedSnake : Snake[/* eat */3](updatedSnake);
+    var match$4 = Snake[/* checkSelfCollision */6](updatedSnake);
+    return /* record */[
+            /* state */match$4 ? /* Lost */1 : /* Going */0,
+            /* eaten */typeof collided === "number" ? eaten : /* :: */[
+                collided,
+                eaten
+              ],
+            /* snake */newSnake,
+            /* spawn */match[0]
           ];
   }
   /* No side effect */
 
   // Generated by BUCKLESCRIPT VERSION 4.0.6, PLEASE EDIT WITH CARE
 
-  var currentGame = /* record */[
-    /* state : GOING */0,
-    /* score */0,
-    /* actor : record */[
-      /* body */map((function (i) {
-              return /* tuple */[
-                      /* tuple */[
-                        100 + imul(i, 5) | 0,
-                        100
-                      ],
-                      /* Right */1,
-                      false
-                    ];
-            }), MyList[/* range */3](100)),
-      /* direction : Right */1
-    ],
-    /* superSpawn : tuple */[
-      performance.now(),
-      undefined
-    ],
-    /* spawn *//* record */[
-      /* pos : tuple */[
-        100,
-        100
-      ],
-      /* symbol */"*"
-    ]
+
+  var constantsState = /* record */[
+    /* windowHeight */256,
+    /* windowWidth */512,
+    /* memberLength */5,
+    /* memberWidth */3
+  ];
+  /* No side effect */
+
+  // Generated by BUCKLESCRIPT VERSION 4.0.6, PLEASE EDIT WITH CARE
+
+  var currentState = /* record */[/* direction : Right */1];
+
+  var initialGame_002 = /* snake */Snake[/* init */0](100, /* Right */1, constantsState[/* memberLength */2]);
+
+  var initialGame_003 = /* spawn : Normal */__(0, [/* record */[
+        /* pos : tuple */[
+          100,
+          100
+        ],
+        /* symbol */"*"
+      ]]);
+
+  var initialGame = /* record */[
+    /* state : Going */0,
+    /* eaten : [] */0,
+    initialGame_002,
+    initialGame_003
   ];
 
-  function clear_canvas(canvas) {
-    var context = canvas.getContext("2d");
-    var cwidth = canvas.width;
-    var cheight = canvas.height;
-    context.clearRect(0, 0, cwidth, cheight);
-    return /* () */0;
-  }
-
-  function draw_actor(canvas, body) {
-    var context = canvas.getContext("2d");
-    return MyList[/* forEachi */2]((function (param, i) {
-                  var match = param[0];
-                  var y = match[1];
-                  var x = match[0];
-                  var match$1;
-                  switch (param[1]) {
-                    case 0 : 
-                        match$1 = /* tuple */[
-                          x,
-                          y + 5 | 0
-                        ];
-                        break;
-                    case 1 : 
-                        match$1 = /* tuple */[
-                          x - 5 | 0,
-                          y
-                        ];
-                        break;
-                    case 2 : 
-                        match$1 = /* tuple */[
-                          x,
-                          y - 5 | 0
-                        ];
-                        break;
-                    case 3 : 
-                        match$1 = /* tuple */[
-                          x + 5 | 0,
-                          y
-                        ];
-                        break;
-                    
-                  }
-                  var match$2 = i % 3;
-                  var color;
-                  if (match$2 > 2 || match$2 < 0) {
-                    color = "#ffff00";
-                  } else {
-                    switch (match$2) {
-                      case 0 : 
-                          color = "#ff0066";
-                          break;
-                      case 1 : 
-                          color = "#0066ff";
-                          break;
-                      case 2 : 
-                          color = "#00cc00";
-                          break;
-                      
-                    }
-                  }
-                  var lineWidth = param[2] ? 8 : 5;
-                  context.beginPath();
-                  context.strokeStyle = color;
-                  context.lineWidth = lineWidth;
-                  context.moveTo(match$1[0], match$1[1]);
-                  context.lineTo(x, y);
-                  context.stroke();
-                  return context.closePath();
-                }), body);
-  }
-
-  function draw_prey(canvas, prey) {
-    if (prey !== undefined) {
-      var match = prey[/* pos */0];
-      var y = match[1];
-      var x = match[0];
-      var context = canvas.getContext("2d");
-      context.beginPath();
-      context.lineWidth = 6;
-      context.moveTo(x - 6 | 0, y);
-      context.lineTo(x, y);
-      context.stroke();
-      return context.closePath();
-    } else {
-      return /* () */0;
-    }
-  }
-
-  function draw_debug(canvas, actor, _) {
-    var context = canvas.getContext("2d");
-    context.strokeStyle = "#ff0066";
-    context.lineWidth = 3;
-    context.rect(300, 0, 150, 100);
-    context.stroke();
-    var body = actor[/* body */0];
-    var bodLength = length(body);
-    var actorStr = "Body Length: " + String(bodLength);
-    console.log(actorStr);
-    context.fillText(actorStr, 310, 10);
-    return /* () */0;
-  }
-
-  function checkCollision(actor, prey) {
-    if (prey !== undefined) {
-      var direction = actor[/* direction */1];
-      var match = hd(actor[/* body */0]);
-      var match$1 = match[0];
-      var y = match$1[1];
-      var x = match$1[0];
-      var match$2 = prey[/* pos */0];
-      var preyY = match$2[1];
-      var preyX = match$2[0];
-      var exit$$1 = 0;
-      if (direction !== 1 && direction < 3) {
-        if (abs(x - preyX | 0) <= 3) {
-          return abs(y - preyY | 0) < 3;
-        } else {
-          return false;
-        }
-      } else {
-        exit$$1 = 1;
-      }
-      if (exit$$1 === 1) {
-        if (abs(x - preyX | 0) < 3) {
-          return abs(y - preyY | 0) <= 3;
-        } else {
-          return false;
-        }
-      }
-      
-    } else {
-      return false;
-    }
-  }
-
-  function gameLoop(t) {
-    var match = currentGame[/* actor */2];
-    var body = match[/* body */0];
-    var direction = match[/* direction */1];
-    var match$1 = currentGame[/* superSpawn */3];
-    var spawn = currentGame[/* spawn */4];
-    var match$2 = hd(body);
-    var match$3 = match$2[0];
-    var newHead_000 = calcNextPos(5, /* tuple */[
-          512,
-          256
-        ], /* tuple */[
-          match$3[0],
-          match$3[1]
-        ], direction);
-    var newHead = /* tuple */[
-      newHead_000,
-      direction,
-      false
-    ];
-    currentGame[/* actor */2][/* body */0] = updateBody(newHead, body);
-    var match$4 = currentGame[/* actor */2];
-    var body$1 = match$4[/* body */0];
-    var canvas_id = "canvas";
-    var match$5 = document.getElementById(canvas_id);
-    var canvas = match$5 !== null ? match$5 : (console.log("cant find canvas canvas \n"), failwith("fail"));
-    var match$6;
-    if (spawn !== undefined) {
-      var match$7 = checkCollision(currentGame[/* actor */2], spawn);
-      if (match$7) {
-        var match$8 = hd(body$1);
-        match$6 = /* tuple */[
-          undefined,
-          /* :: */[
-            /* tuple */[
-              match$8[0],
-              match$8[1],
-              true
-            ],
-            tl(body$1)
-          ]
-        ];
-      } else {
-        match$6 = /* tuple */[
-          spawn,
-          body$1
-        ];
-      }
-    } else {
-      var match$9 = spawnRandom(/* tuple */[
-            12,
-            500
-          ], /* tuple */[
-            12,
-            244
-          ], t | 0);
-      match$6 = /* tuple */[
-        /* record */[
-          /* pos : tuple */[
-            match$9[0],
-            match$9[1]
-          ],
-          /* symbol */"*"
-        ],
-        body$1
-      ];
-    }
-    currentGame[/* spawn */4] = match$6[0];
-    currentGame[/* actor */2][/* body */0] = match$6[1];
-    clear_canvas(canvas);
-    draw_actor(canvas, body$1);
-    draw_prey(canvas, match$1[1]);
-    draw_prey(canvas, spawn);
-    draw_debug(canvas, currentGame[/* actor */2], spawn);
-    requestAnimationFrame(gameLoop);
+  function gameLoop(t, currentGame) {
+    var newGame = updateGame(t, currentGame, currentState[/* direction */0], constantsState);
+    var canvas = load_canvas("canvas");
+    draw_game(canvas, newGame, constantsState[/* memberLength */2]);
+    requestAnimationFrame((function (t) {
+            var match = newGame[/* state */0];
+            if (match) {
+              return /* () */0;
+            } else {
+              return gameLoop(t, newGame);
+            }
+          }));
     return /* () */0;
   }
 
   document.addEventListener("keydown", (function (evt) {
-          var match = handleKey(evt.keyCode, currentGame[/* actor */2][/* direction */1]);
-          currentGame[/* actor */2][/* direction */1] = match !== undefined ? match : currentGame[/* actor */2][/* direction */1];
+          var match = handleKey(evt.keyCode, currentState[/* direction */0]);
+          currentState[/* direction */0] = match !== undefined ? match : currentState[/* direction */0];
           return true;
         }), true);
 
-  gameLoop(performance.now());
+  gameLoop(performance.now(), initialGame);
 
   var Utils$1 = Utils;
 
   var MyList$1 = MyList;
-
-  var windowHeight = 256;
-
-  var windowWidth = 512;
-
-  var memberLength = 5;
-
-  var memberWidth = 3;
-  /* currentGame Not a pure module */
+  /* initialGame Not a pure module */
 
   exports.Utils = Utils$1;
   exports.MyList = MyList$1;
-  exports.windowHeight = windowHeight;
-  exports.windowWidth = windowWidth;
-  exports.memberLength = memberLength;
-  exports.memberWidth = memberWidth;
-  exports.currentGame = currentGame;
-  exports.clear_canvas = clear_canvas;
-  exports.draw_actor = draw_actor;
-  exports.draw_prey = draw_prey;
-  exports.draw_debug = draw_debug;
-  exports.checkCollision = checkCollision;
+  exports.currentState = currentState;
+  exports.initialGame = initialGame;
   exports.gameLoop = gameLoop;
 
   return exports;

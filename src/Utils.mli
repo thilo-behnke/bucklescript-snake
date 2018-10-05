@@ -5,6 +5,7 @@ module Utils: sig
     val double: int -> int
     val incDouble: int -> int
     val sub: int -> int -> int
+    val sum: int -> int -> int
 end
 
 module MyList: sig
@@ -12,4 +13,5 @@ module MyList: sig
     val forEach: ('a -> unit) -> 'a list -> unit
     val forEachi: ('a -> int -> unit) -> 'a list -> unit
     val range: int -> int list
+    val find_opt: ('a -> bool) -> 'a list -> 'a option
     end
