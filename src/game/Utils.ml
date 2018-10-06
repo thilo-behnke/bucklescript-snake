@@ -8,6 +8,7 @@ module Utils =
     let sub a b = a - b
     let sum a b = a + b
   end
+module MyString = struct let append s s' = s ^ s' end
 module MyList =
   struct
     let rec map f = function | [] -> [] | x::xs -> (f x) :: (map f xs)

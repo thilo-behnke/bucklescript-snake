@@ -577,6 +577,12 @@ var MyBundle = (function (exports) {
     /* sum */sum
   ];
 
+  function append$1(s, s$prime) {
+    return s + s$prime;
+  }
+
+  var MyString = /* module */[/* append */append$1];
+
   function map$1(f, param) {
     if (param) {
       return /* :: */[
@@ -978,6 +984,7 @@ var MyBundle = (function (exports) {
   }
 
   function draw_debug(canvas, game) {
+    var eaten = game[/* eaten */1];
     var context = canvas.getContext("2d");
     context.strokeStyle = "#ff0066";
     context.lineWidth = 3;
@@ -986,8 +993,13 @@ var MyBundle = (function (exports) {
     var bodLength = Snake[/* length */4](game[/* snake */2]);
     var actorStr = "Body Length: " + String(bodLength);
     context.fillText(actorStr, 310, 10);
-    var scoreStr = "Score: " + String(Score[/* sum_score */1](game[/* eaten */1]));
-    context.fillText(scoreStr, 310, 40);
+    var eatenNr = MyString[/* append */0]("Eaten: ", String(length(eaten)));
+    var scoreStr = "Score: " + String(Score[/* sum_score */1](eaten));
+    context.fillText(scoreStr + ("(" + (eatenNr + ")")), 310, 20);
+    var stateStr = "State: " + (
+      game[/* state */0] ? "Lost" : "Going"
+    );
+    context.fillText(stateStr, 310, 30);
     return /* () */0;
   }
 
@@ -1491,10 +1503,13 @@ var MyBundle = (function (exports) {
 
   var Utils$1 = Utils;
 
+  var MyString$1 = MyString;
+
   var MyList$1 = MyList;
   /* initialGame Not a pure module */
 
   exports.Utils = Utils$1;
+  exports.MyString = MyString$1;
   exports.MyList = MyList$1;
   exports.currentState = currentState;
   exports.initialGame = initialGame;

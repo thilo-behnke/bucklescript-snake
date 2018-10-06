@@ -8,6 +8,10 @@ module Utils: sig
     val sum: int -> int -> int
 end
 
+module MyString: sig
+    val append: string -> string -> string
+end
+
 module MyList: sig
     val map: ('a -> 'b) -> 'a list -> 'b list
     val forEach: ('a -> unit) -> 'a list -> unit

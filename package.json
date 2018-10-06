@@ -8,7 +8,9 @@
     "build": "bsb -make-world",
     "watch": "bsb -make-world -w",
     "release": "electron-packager . snake --overwrite --asar --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=TB --version-string.FileDescription=TB --version-string.ProductName='Snake'",
-    "start": "rollup --config && electron ."
+    "start": "electron .",
+    "webpack": "webpack -w",
+    "webpack:production": "NODE_ENV=production webpack"
   },
   "keywords": [
     "BuckleScript"
@@ -20,7 +22,13 @@
     "electron": "^3.0.2",
     "electron-packager": "^12.2.0",
     "electron-winstaller": "^2.7.0",
-    "rollup": "^0.66.3"
+    "rollup": "^0.66.3",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "reason-react": "^0.5.3"
+  }
 }

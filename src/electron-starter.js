@@ -9,12 +9,14 @@ let win
 function createWindow () {
     // Erstellen des Browser-Fensters.
     win = new BrowserWindow({width: 800, height: 600})
+    win.setFullScreen(true)
+    win.setMenuBarVisibility(false)
 
     // und Laden der index.html der App.
     win.loadFile('index.html')
 
     // Öffnen der DevTools.
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
 
     // Ausgegeben, wenn das Fenster geschlossen wird.
     win.on('closed', () => {
