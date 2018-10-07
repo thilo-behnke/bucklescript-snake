@@ -13,13 +13,6 @@ type enemy =
   | Normal of prey
   | Special of prey
   | None
-type winCondition =
-  | Time of int
-  | Count of int
-  | Length of int
-type level = {
-  grid: grid;
-  winCondition: winCondition;}
 type game =
   {
   state: gameState;

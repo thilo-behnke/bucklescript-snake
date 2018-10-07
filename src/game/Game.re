@@ -6,15 +6,7 @@ open Draw;
 open Constants;
 open Levels;
 
-let currentState = {
-  direction: Right,
-  reset: false,
-  isRunning: true,
-  level: {
-    grid: Levels.load_level(1),
-    winCondition: Count(3),
-  },
-};
+let currentState = {direction: Right, reset: false, isRunning: true, level: Levels.load_level(1)};
 
 let initialGame = {
   state: Going,
@@ -81,11 +73,11 @@ let resetGame = (_event, _self) =>
 let changeLevel = (lvl, _event, _self) =>
   currentState.isRunning ?
     {
-      currentState.level = {grid: Levels.load_level(lvl), winCondition: Count(3)};
+      currentState.level = Levels.load_level(lvl);
       currentState.reset = true;
     } :
     {
-      currentState.level = {grid: Levels.load_level(lvl), winCondition: Count(3)};
+      currentState.level = Levels.load_level(lvl);
       currentState.direction = Right;
       currentState.reset = false;
       currentState.isRunning = true;
