@@ -1,5 +1,5 @@
 open Utils
-type position = (int* int)
+open Levels
 type direction =
   | Up
   | Right
@@ -29,10 +29,14 @@ module Snake : Actor =
     let move b d ml (maxX,maxY) =
       let calcNextPos n (max_x,max_y) (x,y) =
         function
-        | Up  -> let new_y = if y > 0 then y - n else max_y in (x, new_y)
-        | Right  -> let new_x = if x < max_x then x + n else 0 in (new_x, y)
-        | Down  -> let new_y = if y < max_y then y + n else 0 in (x, new_y)
-        | Left  -> let new_x = if x > 0 then x - n else max_x in (new_x, y) in
+        | Up  ->
+            let new_y = if y > (0 + 5) then y - n else max_y in (x, new_y)
+        | Right  ->
+            let new_x = if x < (max_x - 5) then x + n else 0 in (new_x, y)
+        | Down  ->
+            let new_y = if y < (max_y - 5) then y + n else 0 in (x, new_y)
+        | Left  ->
+            let new_x = if x > (0 + 5) then x - n else max_x in (new_x, y) in
       let ((x,y),_,_) = List.hd b in
       let h' = ((calcNextPos ml (maxX, maxY) (x, y) d), d, false) in
       let rec inner m l =

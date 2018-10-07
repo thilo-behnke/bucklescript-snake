@@ -1,7 +1,10 @@
 open Actor
+open Utils
 open Constants
+open Levels
 type gameState =
   | Going
+  | Won
   | Lost
 type prey = {
   pos: position;
@@ -10,12 +13,25 @@ type enemy =
   | Normal of prey
   | Special of prey
   | None
+type winCondition =
+  | Time of int
+  | Count of int
+  | Length of int
+type level = {
+  grid: grid;
+  winCondition: winCondition;}
 type game =
   {
   state: gameState;
   eaten: enemy list;
   snake: Snake.body;
   spawn: enemy;}
+type mutableState =
+  {
+  mutable direction: Actor.direction;
+  mutable reset: bool;
+  mutable isRunning: bool;
+  mutable level: level;}
 let handleKey key_code c_direction =
   match key_code with
   | 38 ->
@@ -41,8 +57,28 @@ let spawnRandomSuper (fromX,toX) (fromY,toY) seed =
   let _ = Random.init @@ seed in
   (((Random.int toX) + fromX), ((Random.int toY) + fromY),
     ((List.nth cs) @@ (Random.int 3)))
-let updateGame t oldGame direction constants =
-  let { memberWidth; memberLength; windowWidth; windowHeight } = constants in
+let getHeadTile snake tileSize =
+  let ((x,y),_,_) = (Snake.getData snake) |> List.hd in
+  ((x / tileSize), (y / tileSize))
+let checkGridCollision snake grid tileSize =
+  let ((x,y),_,_) = (Snake.getData snake) |> List.hd in
+  let headTile = getHeadTile snake tileSize in
+  let tile =
+    MyList.find_opt
+      (fun ((x,y),_)  -> (x = (fst headTile)) && (y = (snd headTile))) grid in
+  match tile with
+  | None  -> false
+  | Some ((x',y'),t) ->
+      (match t with
+       | Empty  -> false
+       | Block  -> true
+       | LeftWall  -> x <= ((x' * tileSize) + (tileSize / 2))
+       | RightWall  -> x >= ((x' * tileSize) + (tileSize / 2)))
+let updateGame t oldGame mutableState constants =
+  let { memberWidth; memberLength; windowWidth; windowHeight; tileSize } =
+    constants in
+  let { level; direction } = mutableState in
+  let { grid; winCondition } = level in
   let spawnPrey seed =
     spawnRandom ((4 * memberWidth), (windowWidth - (4 * memberWidth)))
       ((4 * memberWidth), (windowHeight - (4 * memberWidth))) seed in
@@ -70,11 +106,22 @@ let updateGame t oldGame direction constants =
     match collided with
     | Normal _|Special _ -> Snake.eat updatedSnake
     | None  -> updatedSnake in
+  let gridCollision = checkGridCollision snake grid tileSize in
+  let hasWon =
+    match winCondition with
+    | Count n -> (List.length eaten) >= n
+    | _ -> false in
   {
     state =
-      (match Snake.checkSelfCollision updatedSnake with
-       | true  -> Lost
-       | false  -> Going);
+      (if gridCollision
+       then Lost
+       else
+         if hasWon
+         then Won
+         else
+           (match Snake.checkSelfCollision updatedSnake with
+            | true  -> Lost
+            | false  -> Going));
     snake = newSnake;
     spawn = newSpawn;
     eaten =

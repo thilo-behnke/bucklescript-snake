@@ -7,6 +7,10 @@ module.exports = {
         // main: './lib/es6_global/src/game/Main.bs.js',
         main: './lib/es6_global/src/Root.bs.js'
     },
+    target: 'web',
+    node: {
+        fs: 'empty'
+    },
     mode: isProd ? 'production' : 'development',
     output: {
         path: path.join(__dirname, "bundledOutputs"),

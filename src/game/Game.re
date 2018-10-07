@@ -4,14 +4,17 @@ include Utils;
 open Director;
 open Draw;
 open Constants;
+open Levels;
 
-type mutableState = {
-  mutable direction: Actor.direction,
-  mutable reset: bool,
-  mutable isRunning: bool,
+let currentState = {
+  direction: Right,
+  reset: false,
+  isRunning: true,
+  level: {
+    grid: Levels.load_level(1),
+    winCondition: Count(3),
+  },
 };
-
-let currentState = {direction: Right, reset: false, isRunning: true};
 
 let initialGame = {
   state: Going,
@@ -23,10 +26,10 @@ let initialGame = {
 let getTimeStamp = () => Dom_html.performanceNow(Dom_html.performance);
 
 let rec gameLoop = (t: float, currentGame: game) => {
-  let newGame = Director.updateGame(t, currentGame, currentState.direction, constantsState);
+  let newGame = Director.updateGame(t, currentGame, currentState, constantsState);
 
   let canvas = load_canvas("canvas");
-  let _ = draw_game(canvas, newGame, constantsState);
+  let _ = draw_game(canvas, newGame, currentState, constantsState);
 
   Dom_html.requestAnimationFrame(t =>
     currentState.reset ?
@@ -37,6 +40,7 @@ let rec gameLoop = (t: float, currentGame: game) => {
       (
         switch (newGame.state) {
         | Going => gameLoop(t, newGame)
+        | Won
         | Lost =>
           currentState.isRunning = false;
           ();
@@ -74,7 +78,27 @@ let resetGame = (_event, _self) =>
       gameLoop(getTimeStamp(), initialGame);
     };
 
+let changeLevel = (lvl, _event, _self) =>
+  currentState.isRunning ?
+    {
+      currentState.level = {grid: Levels.load_level(lvl), winCondition: Count(3)};
+      currentState.reset = true;
+    } :
+    {
+      currentState.level = {grid: Levels.load_level(lvl), winCondition: Count(3)};
+      currentState.direction = Right;
+      currentState.reset = false;
+      currentState.isRunning = true;
+      gameLoop(getTimeStamp(), initialGame);
+    };
+
 let make = _children => {
   ...component,
-  render: self => <button onClick={self.handle(resetGame)}> {ReasonReact.string("Reset Game")} </button>,
+  render: self =>
+    <div>
+      <button onClick={self.handle(resetGame)}> {ReasonReact.string("Reset Game")} </button>
+      <button onClick={self.handle(changeLevel(1))}> {ReasonReact.string("1")} </button>
+      <button onClick={self.handle(changeLevel(2))}> {ReasonReact.string("2")} </button>
+      <button onClick={self.handle(changeLevel(3))}> {ReasonReact.string("3")} </button>
+    </div>,
 };

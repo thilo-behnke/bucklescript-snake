@@ -1,7 +1,7 @@
-open Dom_html;
 open Actor;
 open Utils;
 open Director;
+open Levels;
 open Constants;
 open Score;
 
@@ -55,7 +55,7 @@ let draw_prey = (canvas, prey) =>
   switch (prey) {
   | Normal(p)
   | Special(p) =>
-    let {pos: (x, y), symbol} = p;
+    let {pos: (x, y)} = p;
     let canvas = Dom_html.canvasElementToJsObj(canvas);
     let context = Dom_html.canvasRenderingContext2DToJsObj(canvas##getContext("2d"));
     let color =
@@ -75,15 +75,15 @@ let draw_prey = (canvas, prey) =>
   };
 
 let draw_debug = (canvas, game) => {
-  let {snake, spawn, eaten, state} = game;
+  let {snake, eaten, state} = game;
   let canvas = Dom_html.canvasElementToJsObj(canvas);
   let context = Dom_html.canvasRenderingContext2DToJsObj(canvas##getContext("2d"));
-  context##beginPath();
+  ignore @@ context##beginPath();
   context##strokeStyle #= "#ff0066";
   context##lineWidth #= 3;
   ignore @@ context##rect(300, 0, 150, 100);
   ignore @@ context##stroke();
-  context##closePath();
+  ignore @@ context##closePath();
 
   let bodLength = Snake.length(snake);
   let actorStr = "Body Length: " ++ string_of_int(bodLength);
@@ -97,6 +97,7 @@ let draw_debug = (canvas, game) => {
       switch (state) {
       | Going => "Going"
       | Lost => "Lost"
+      | Won => "Won"
       }
     );
   ignore @@ context##fillText(stateStr, 310, 30);
@@ -106,7 +107,7 @@ let draw_boundary = (canvas, constants) => {
   let {windowWidth, windowHeight} = constants;
   let canvas = Dom_html.canvasElementToJsObj(canvas);
   let context = Dom_html.canvasRenderingContext2DToJsObj(canvas##getContext("2d"));
-  context##beginPath();
+  ignore @@ context##beginPath();
   context##strokeStyle #= "#000000";
   context##lineWidth #= 3;
   ignore @@ context##rect(0, 0, windowWidth, windowHeight);
@@ -114,12 +115,50 @@ let draw_boundary = (canvas, constants) => {
   context##closePath();
 };
 
-let draw_game = (canvas, game, constants) => {
-  let {snake, spawn, eaten} = game;
+let draw_grid = (canvas, grid, {tileSize}) => {
+  let canvas = Dom_html.canvasElementToJsObj(canvas);
+  let context = Dom_html.canvasRenderingContext2DToJsObj(canvas##getContext("2d"));
+
+  MyList.forEach(
+    (((x, y), tile)) => {
+      ignore @@ context##beginPath();
+
+      ignore @@
+      (
+        switch (tile) {
+        | Empty =>
+          context##strokeStyle #= "#D3D3D3";
+          context##lineWidth #= 1;
+          ignore @@ context##rect(x * tileSize, y * tileSize, tileSize, tileSize);
+        | Block =>
+          context##strokeStyle #= "#000000";
+          ignore @@ context##fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
+        | LeftWall =>
+          context##strokeStyle #= "#000000";
+          ignore @@ context##fillRect(x * tileSize, y * tileSize, tileSize / 2, tileSize);
+        | RightWall =>
+          context##strokeStyle #= "#000000";
+          ignore @@ context##fillRect(x * tileSize + tileSize / 2, y * tileSize, tileSize / 2, tileSize);
+        }
+      );
+      /*ignore @@*/
+      /*context##fillText(string_of_int(x) ++ " / " ++ string_of_int(y), x * tileSize, y * tileSize + tileSize / 2);*/
+      ignore @@ context##stroke();
+      context##closePath();
+    },
+    grid,
+  );
+  /*ignore @@ context##rect(0, 0, windowWidth, windowHeight);*/
+};
+
+let draw_game = (canvas, game, currentState, constants) => {
+  let {snake, spawn} = game;
+  let {level: {grid}} = currentState;
   let {memberLength, memberWidth} = constants;
   ignore @@ clear_canvas(canvas);
   ignore @@ draw_actor(canvas, snake, memberLength, memberWidth);
   ignore @@ draw_prey(canvas, spawn);
   ignore @@ draw_debug(canvas, game);
   ignore @@ draw_boundary(canvas, constants);
+  ignore @@ draw_grid(canvas, grid, constants);
 };

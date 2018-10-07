@@ -2,37 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5675435-4c7f-4812-9c09-d9ab41d22333" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Root.re" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/game/Game.re" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menus/Menu.re" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/Levels.ml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/Levels.mli" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/bsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/all.js" beforeDir="false" afterPath="$PROJECT_DIR$/doc/all.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Actor.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Constants.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Director.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Dom_html.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Draw.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Main.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Score.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/Utils.bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bundledOutputs/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/bundledOutputs/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Actor.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Actor.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Constants.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Constants.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Director.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Director.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Draw.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Draw.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Game.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Game.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Main.bs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Score.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Score.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/es6_global/src/game/Utils.bs.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/es6_global/src/game/Utils.bs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rollup.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Actor.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Actor.ml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Constants.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Constants.ml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Director.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Director.ml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dom_html.re" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Dom_html.re" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Draw.re" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Draw.re" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.re" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Score.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Score.ml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Score.mli" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Score.mli" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Utils.ml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Utils.mli" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Utils.mli" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/electron-starter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/electron-starter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Actor.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Actor.ml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Constants.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Constants.ml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Director.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Director.ml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Draw.re" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Draw.re" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Game.re" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Game.re" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Utils.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Utils.ml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/Utils.mli" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Utils.mli" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,47 +37,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Menu.re" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/menus/Menu.re">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="34" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.re" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/Game.re">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Constants.ml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/game/Constants.ml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Director.ml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Director.ml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+            <state relative-caret-position="510">
+              <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Draw.re" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game/Draw.re">
+      <file leaf-file-name="Game.re" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game/Game.re">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-212">
-              <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+            <state relative-caret-position="468">
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Levels.ml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/Levels.ml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Levels.mli" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/Levels.mli">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -94,8 +76,17 @@
       <file leaf-file-name="Actor.ml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game/Actor.ml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="510">
+              <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Draw.re" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/game/Draw.re">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -113,22 +104,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Js.log</find>
-      <find>draw_prey</find>
-      <find>score</find>
-      <find>draw_d</find>
-      <find>sum_</find>
-      <find>checksnake</find>
-      <find>check</find>
-      <find>snake</find>
-      <find>memberlength</find>
-      <find>draw</find>
-      <find>List.hd</find>
-      <find>body</find>
-      <find>actor</find>
-      <find>checkC</find>
-      <find>Director</find>
-      <find>List.length</find>
       <find>direction</find>
       <find>Snake.head</find>
       <find>checkSnakeCollision</find>
@@ -143,6 +118,22 @@
       <find>rect</find>
       <find>ml</find>
       <find>draw_actor</find>
+      <find>beginPath</find>
+      <find>eaten}</find>
+      <find>symbol</find>
+      <find>grid</find>
+      <find>Utils</find>
+      <find>open Rea</find>
+      <find>fs</find>
+      <find>readFile</find>
+      <find>fun</find>
+      <find>(fun</find>
+      <find>re</find>
+      <find>&lt;|</find>
+      <find>|</find>
+      <find>line</find>
+      <find>Js.log</find>
+      <find>Js.l</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -176,18 +167,27 @@
         <option value="$PROJECT_DIR$/src/css/styles.css" />
         <option value="$PROJECT_DIR$/src/Draw.re" />
         <option value="$PROJECT_DIR$/webpack.config.json" />
-        <option value="$PROJECT_DIR$/bsconfig.json" />
         <option value="$PROJECT_DIR$/src/Test.re" />
         <option value="$PROJECT_DIR$/src/menus/Test.re" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/menus/Root.re" />
-        <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/Root.re" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/game/Game.re" />
-        <option value="$PROJECT_DIR$/src/game/Actor.ml" />
-        <option value="$PROJECT_DIR$/src/game/Draw.re" />
         <option value="$PROJECT_DIR$/src/game/Constants.ml" />
+        <option value="$PROJECT_DIR$/levels/level_1.txt" />
+        <option value="$PROJECT_DIR$/src/game/Reader.ml" />
+        <option value="$PROJECT_DIR$/src/game/Reader.mli" />
+        <option value="$PROJECT_DIR$/src/game/Dom_html.re" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/webpack.config.js" />
+        <option value="$PROJECT_DIR$/src/game/Actor.ml" />
+        <option value="$PROJECT_DIR$/bsconfig.json" />
+        <option value="$PROJECT_DIR$/src/game/Utils.ml" />
+        <option value="$PROJECT_DIR$/src/game/Utils.mli" />
+        <option value="$PROJECT_DIR$/src/game/Levels.mli" />
+        <option value="$PROJECT_DIR$/src/game/Director.ml" />
+        <option value="$PROJECT_DIR$/src/game/Draw.re" />
+        <option value="$PROJECT_DIR$/src/game/Levels.ml" />
+        <option value="$PROJECT_DIR$/src/game/Game.re" />
       </list>
     </option>
   </component>
@@ -219,7 +219,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -227,39 +226,11 @@
               <item name="my-new-project23" type="b2602c69:ProjectViewProjectNode" />
               <item name="my-new-project23" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="my-new-project23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-new-project23" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-new-project23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-new-project23" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="es6_global" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-new-project23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-new-project23" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="es6_global" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-new-project23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-new-project23" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my-new-project23" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my-new-project23" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="game" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,26 +298,30 @@
       <workItem from="1538823334120" duration="3252000" />
       <workItem from="1538826602161" duration="622000" />
       <workItem from="1538827237035" duration="3179000" />
+      <workItem from="1538830429853" duration="17000" />
+      <workItem from="1538842636624" duration="7933000" />
+      <workItem from="1538907345999" duration="12278000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86044000" />
+    <option name="totallyTimeSpent" value="106272000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1227608" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Bucklescript" order="11" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2777778" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8250377" visible="true" weight="0.1227608" />
+      <window_info anchor="bottom" id="Bucklescript" order="11" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info id="Structure" order="1" sideWeight="0.1749623" side_tool="true" visible="true" weight="0.1227608" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -365,27 +340,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/demo.bs.js" />
-    <entry file="file://$PROJECT_DIR$/src/Demo.ml" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/electron-starter.js" />
-    <entry file="file://$PROJECT_DIR$/src/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/demo.bs.js" />
-    <entry file="file://$PROJECT_DIR$/src/index.html" />
     <entry file="file://$PROJECT_DIR$/node_modules/bs-platform/lib/refmt.exe">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -425,13 +379,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Dom_html.re">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/installers/windows/createinstaller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -455,13 +402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Utils.mli">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/electron-starter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -480,16 +420,6 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/rollup.config.js" />
-    <entry file="file://$PROJECT_DIR$/bundledOutputs/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/all.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25466">
@@ -497,26 +427,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bundledOutputs/test.js">
+    <entry file="file://$PROJECT_DIR$/bundledOutputs/test.js" />
+    <entry file="file://$PROJECT_DIR$/src/game/Main.re" />
+    <entry file="file://$PROJECT_DIR$/src/Root.re">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Utils.ml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="18" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -527,73 +443,153 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bsconfig.json">
+    <entry file="file://$PROJECT_DIR$/src/game/Constants.ml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        <state relative-caret-position="51">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Root.re">
+    <entry file="file://$PROJECT_DIR$/src/game/Reader.mli">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+          <caret line="1" column="25" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Reader.ml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="8" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.merlin">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@types/node/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="4238" column="20" selection-start-line="4238" selection-start-column="20" selection-end-line="4238" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/es6_global/src/game/Game.bs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="28" lean-forward="true" selection-start-line="4" selection-start-column="28" selection-end-line="4" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="7" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bundledOutputs/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="597">
+          <caret line="108" column="72" selection-start-line="108" selection-start-column="72" selection-end-line="108" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Dom_html.re">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Main.re">
+    <entry file="file://$PROJECT_DIR$/levels/level_1.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        <state>
+          <caret selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Actor.ml">
+    <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state relative-caret-position="289">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/bs-platform/lib/ocaml/belt_List.mli">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="362" column="4" selection-start-line="362" selection-start-column="4" selection-end-line="362" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Utils.ml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Utils.mli">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Draw.re">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-212">
-          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+        <state relative-caret-position="366">
+          <caret line="153" column="45" selection-start-line="153" selection-start-column="45" selection-end-line="153" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Director.ml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        <state relative-caret-position="510">
+          <caret line="125" column="21" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Actor.ml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Levels.mli">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game/Levels.ml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game/Game.re">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game/Constants.ml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="60" selection-start-line="7" selection-start-column="60" selection-end-line="7" selection-end-column="60" />
+        <state relative-caret-position="468">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
         </state>
       </provider>
     </entry>

@@ -2,6 +2,7 @@ module Utils: sig
     val add: int -> int -> int
     val inc: int -> int
     val dec: int -> int
+    val div: int -> int -> int
     val double: int -> int
     val incDouble: int -> int
     val sub: int -> int -> int
@@ -10,6 +11,7 @@ end
 
 module MyString: sig
     val append: string -> string -> string
+    val explode: string -> char list
 end
 
 module MyList: sig
@@ -18,4 +20,5 @@ module MyList: sig
     val forEachi: ('a -> int -> unit) -> 'a list -> unit
     val range: int -> int list
     val find_opt: ('a -> bool) -> 'a list -> 'a option
+    val reducei: ('b list -> int -> 'a -> 'b list) -> 'a list -> 'b list
     end
