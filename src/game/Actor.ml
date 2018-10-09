@@ -24,7 +24,7 @@ module Snake : Actor =
     type body = member list
     let init n d ml =
       (MyList.range n) |>
-        (List.map (fun i  -> (((100 + (i * ml)), 100), d, false)))
+        (List.map (fun i  -> (((100 + (i * ml)), 300), d, false)))
     let head b = let ((x,y),_,_) = List.hd b in (x, y)
     let move b d ml (maxX,maxY) =
       let calcNextPos n (max_x,max_y) (x,y) =

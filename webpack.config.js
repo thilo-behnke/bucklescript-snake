@@ -15,5 +15,12 @@ module.exports = {
     output: {
         path: path.join(__dirname, "bundledOutputs"),
         filename: '[name].js',
+        publicPath: 'bundledOutputs/'
     },
+    module: {
+        rules: [{
+            test: /\.(png|svg|jpg|gif)$/,
+            loader: 'file-loader?name=img/[name].[ext]'
+        }]
+    }
 };

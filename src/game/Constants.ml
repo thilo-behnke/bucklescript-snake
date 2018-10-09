@@ -7,9 +7,9 @@ type constants =
   tileSize: int;}
 let constantsState =
   {
-    windowHeight = 256;
-    windowWidth = 512;
+    windowWidth = 1536;
+    windowHeight = 768;
     memberLength = 5;
-    memberWidth = 3;
-    tileSize = 32
+    memberWidth = 10;
+    tileSize = (32 * 3)
   }

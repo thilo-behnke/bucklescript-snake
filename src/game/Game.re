@@ -11,8 +11,8 @@ let currentState = {direction: Right, reset: false, isRunning: true, level: Leve
 let initialGame = {
   state: Going,
   eaten: [],
-  snake: Actor.Snake.init(100, Right, constantsState.memberLength),
-  spawn: Normal({pos: (100, 100), symbol: "*"}),
+  snake: Actor.Snake.init(400, Right, constantsState.memberLength),
+  spawn: None,
 };
 
 let getTimeStamp = () => Dom_html.performanceNow(Dom_html.performance);
@@ -74,6 +74,7 @@ let changeLevel = (lvl, _event, _self) =>
   currentState.isRunning ?
     {
       currentState.level = Levels.load_level(lvl);
+      currentState.direction = Right;
       currentState.reset = true;
     } :
     {

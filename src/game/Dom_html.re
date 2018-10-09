@@ -1,3 +1,4 @@
+/*type svgElement;*/
 type imageElement;
 
 type canvasRenderingContext2D;
@@ -5,13 +6,17 @@ type canvasRenderingContext2D;
 type canvasElement;
 
 type performanceObj;
+type imageObj;
 
 [@bs.val] external document: Dom.document = "";
 
 [@bs.val] external window: Dom.window = "";
 
-/* external createImg: (_ [@bs.as "img"]) -> document -> imageElement = "createElement" [@@bs.send] */
-[@bs.send] external createImg: (Dom.document, [@bs.as "img"] _) => imageElement = "createElement";
+[@bs.send] [@bs.send]
+/*external createSvg:*/
+/*(Dom.document, Dom.eventTarget_like(Dom._node(Dom._document(Dom._baseClass))), string) => svgElement =*/
+/*"createElementNS";*/
+external createImg: (Dom.document, [@bs.as "img"] _) => imageElement = "createElement";
 
 [@bs.val] external requestAnimationFrame: (float => unit) => unit = "";
 
@@ -25,8 +30,12 @@ external addEventListenerImg: (imageElement, string, Dom.event_like('a) => bool,
 [@bs.val] external performance: performanceObj = "";
 [@bs.send] external performanceNow: performanceObj => float = "now";
 
+[@bs.new] external createImg: (int, int) => imageObj = "Image";
+
 /* unsafe casts */
+external imageObjToJsObj: imageObj => Js.t({..}) = "%identity";
 external imageElementToJsObj: imageElement => Js.t({..}) = "%identity";
+/*external svgElementToJsObj: svgElement => Js.t({..}) = "%identity";*/
 
 external canvasRenderingContext2DToJsObj: canvasRenderingContext2D => Js.t({..}) = "%identity";
 

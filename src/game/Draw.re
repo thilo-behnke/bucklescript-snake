@@ -5,6 +5,8 @@ open Levels;
 open Constants;
 open Score;
 
+[@bs.module "./bug.svg"] external bug: string = "default";
+
 let load_canvas = canvas_id =>
   switch (Dom_html.getElementById(Dom_html.document, canvas_id)) {
   | None =>
@@ -65,11 +67,10 @@ let draw_prey = (canvas, prey) =>
       | None => "#ffff00"
       };
     ignore @@ context##beginPath();
-    context##strokeStyle #= color;
-    context##lineWidth #= 6;
-    ignore @@ context##moveTo(x - 6, y);
-    ignore @@ context##lineTo(x, y);
-    ignore @@ context##stroke();
+    let img = Dom_html.createImg(15, 15);
+    let jsImg = Dom_html.imageObjToJsObj(img);
+    jsImg##src #= bug;
+    ignore @@ context##drawImage(jsImg, x - 15 / 2, y - 15 / 2);
     context##closePath();
   | None => ()
   };
@@ -81,16 +82,16 @@ let draw_debug = (canvas, game) => {
   ignore @@ context##beginPath();
   context##strokeStyle #= "#ff0066";
   context##lineWidth #= 3;
-  ignore @@ context##rect(300, 0, 150, 100);
+  ignore @@ context##rect(1300, 0, 150, 100);
   ignore @@ context##stroke();
   ignore @@ context##closePath();
 
   let bodLength = Snake.length(snake);
   let actorStr = "Body Length: " ++ string_of_int(bodLength);
-  ignore @@ context##fillText(actorStr, 310, 10);
+  ignore @@ context##fillText(actorStr, 1310, 10);
   let eatenNr = eaten |> List.length |> string_of_int |> MyString.append("Eaten: ");
   let scoreStr = "Score: " ++ string_of_int(Score.sum_score(eaten));
-  ignore @@ context##fillText(scoreStr ++ "(" ++ eatenNr ++ ")", 310, 20);
+  ignore @@ context##fillText(scoreStr ++ "(" ++ eatenNr ++ ")", 1310, 20);
   let stateStr =
     "State: "
     ++ (
@@ -100,7 +101,7 @@ let draw_debug = (canvas, game) => {
       | Won => "Won"
       }
     );
-  ignore @@ context##fillText(stateStr, 310, 30);
+  ignore @@ context##fillText(stateStr, 1310, 30);
 };
 
 let draw_boundary = (canvas, constants) => {
@@ -141,8 +142,8 @@ let draw_grid = (canvas, grid, {tileSize}) => {
           ignore @@ context##fillRect(x * tileSize + tileSize / 2, y * tileSize, tileSize / 2, tileSize);
         }
       );
-      /*ignore @@*/
-      /*context##fillText(string_of_int(x) ++ " / " ++ string_of_int(y), x * tileSize, y * tileSize + tileSize / 2);*/
+      ignore @@
+      context##fillText(string_of_int(x) ++ " / " ++ string_of_int(y), x * tileSize, y * tileSize + tileSize / 2);
       ignore @@ context##stroke();
       context##closePath();
     },

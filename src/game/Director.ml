@@ -72,9 +72,39 @@ let updateGame t oldGame mutableState constants =
     constants in
   let { level; direction } = mutableState in
   let { grid; winCondition } = level in
+  let rec getAllowedSpawningPositions =
+    function
+    | [] -> []
+    | (_,Block )::xs -> getAllowedSpawningPositions xs
+    | ((gridX,gridY),Empty )::xs ->
+        let x = gridX * tileSize in
+        let y = gridY * tileSize in (x, (y + (tileSize / 2))) ::
+          ((x + (tileSize / 2)), y) ::
+          ((x + (tileSize / 2)), (y + (tileSize / 2))) ::
+          ((x + (tileSize / 2)), (y + tileSize)) ::
+          ((x + tileSize), (y + (tileSize / 2))) ::
+          (getAllowedSpawningPositions xs)
+    | ((gridX,gridY),LeftWall )::xs ->
+        let x = gridX * tileSize in
+        let y = gridY * tileSize in ((x + (tileSize / 2)), y) ::
+          ((x + (tileSize / 2)), (y + (tileSize / 2))) ::
+          ((x + (tileSize / 2)), (y + tileSize)) ::
+          ((x + tileSize), (y + (tileSize / 2))) ::
+          (getAllowedSpawningPositions xs)
+    | ((gridX,gridY),RightWall )::xs ->
+        let x = gridX * tileSize in
+        let y = gridY * tileSize in ((x + (tileSize / 2)), y) ::
+          ((x + (tileSize / 2)), y) ::
+          ((x + (tileSize / 2)), (y + (tileSize / 2))) ::
+          ((x + (tileSize / 2)), (y + tileSize)) ::
+          (getAllowedSpawningPositions xs) in
   let spawnPrey seed =
-    spawnRandom ((4 * memberWidth), (windowWidth - (4 * memberWidth)))
-      ((4 * memberWidth), (windowHeight - (4 * memberWidth))) seed in
+    let _ = Random.init @@ seed in
+    let allowedPositions = getAllowedSpawningPositions grid in
+    let r =
+      (List.nth allowedPositions) @@
+        (Random.int @@ (List.length @@ (getAllowedSpawningPositions grid))) in
+    Js.log r; r in
   let getNormalEaten eaten =
     List.length @@
       (List.filter (fun x  -> match x with | Normal _ -> true | _ -> false)
