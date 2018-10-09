@@ -1,14 +1,9 @@
 
 
-# Build
-```
-npm run build
-```
-
 # Watch
-
-```
-npm run watch
+- npm run watch
+- npm run webpack
+- npm run start (startet electron app)
 ```
 
 
