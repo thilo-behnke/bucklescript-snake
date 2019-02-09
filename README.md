@@ -9,5 +9,5 @@ npm install (installs dependencies)
 
 # Use in Electron
 - npm run watch
-- npm run webpack Client
+- npm run webpack
 - npm run start
