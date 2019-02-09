@@ -1,10 +1,10 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
-        // main: './lib/es6_global/src/game/Main.bs.js',
         main: './lib/es6_global/src/Root.bs.js'
     },
     target: 'web',
@@ -22,5 +22,11 @@ module.exports = {
             test: /\.(png|svg|jpg|gif)$/,
             loader: 'file-loader?name=img/[name].[ext]'
         }]
-    }
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'bundledOutputs'),
+        compress: true,
+        port: 9000
+    },
+    plugins: [new HtmlWebpackPlugin({template: "./templates/index.html"})]
 };
