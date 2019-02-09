@@ -1,6 +1,13 @@
 
+# Before
+npm install (installs dependencies)
 
-# Watch
+# Use in Browser
 - npm run watch
 - npm run webpack
-- npm run start (startet electron app)
+- open http://localhost:9000/
+
+# Use in Electron
+- npm run watch
+- npm run webpack Client
+- npm run start
