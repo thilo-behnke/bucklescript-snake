@@ -32,9 +32,7 @@ module Levels =
           let (levelStr,winCondition) = List.assoc i levels in
           let grid =
             (MyList.reducei
-               (fun acc  ->
-                  fun i  ->
-                    fun c  ->
+               (fun acc i c ->
                       let pos =
                         ((i mod
                             (constantsState.windowWidth /

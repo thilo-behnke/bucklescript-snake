@@ -13,7 +13,7 @@ function createWindow () {
     win.setMenuBarVisibility(false)
 
     // und Laden der index.html der App.
-    win.loadFile('index.html')
+    win.loadFile('./index.html')
 
     // Öffnen der DevTools.
     // win.webContents.openDevTools()

@@ -54,14 +54,14 @@ let getHeadTile snake tileSize =
   let ((x,y),_,_) = (Snake.getData snake) |> List.hd in
   ((x / tileSize), (y / tileSize))
 let checkGridCollision snake grid tileSize =
-  let ((x,y),_,_) = (Snake.getData snake) |> List.hd in
+  let ((x,_),_,_) = (Snake.getData snake) |> List.hd in
   let headTile = getHeadTile snake tileSize in
   let tile =
     MyList.find_opt
       (fun ((x,y),_)  -> (x = (fst headTile)) && (y = (snd headTile))) grid in
   match tile with
   | None  -> false
-  | Some ((x',y'),t) ->
+  | Some ((x',_),t) ->
       (match t with
        | Empty  -> false
        | Block  -> true
