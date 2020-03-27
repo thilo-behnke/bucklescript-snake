@@ -5,7 +5,7 @@ open Levels;
 open Constants;
 open Score;
 
-[@bs.module "../../../../bug.svg"] external bug : string = "default";
+[@bs.module "../../../../bug.svg"] external bug: string = "default";
 
 let load_canvas = canvas_id =>
   switch (Dom_html.getElementById(Dom_html.document, canvas_id)) {
@@ -46,8 +46,8 @@ let draw_actor = (canvas, snake, memberLength, memberWidth) => {
          };
        let lineWidth = isEating ? memberWidth + 3 : memberWidth;
        ignore @@ context##beginPath();
-       context##strokeStyle#=color;
-       context##lineWidth#=lineWidth;
+       context##strokeStyle #= color;
+       context##lineWidth #= lineWidth;
        ignore @@ context##moveTo(fromX, fromY);
        ignore @@ context##lineTo(x, y);
        ignore @@ context##stroke();
@@ -66,7 +66,7 @@ let draw_prey = (canvas, prey) =>
     ignore @@ context##beginPath();
     let img = Dom_html.createImg(15, 15);
     let jsImg = Dom_html.imageObjToJsObj(img);
-    jsImg##src#=bug;
+    jsImg##src #= bug;
     ignore @@ context##drawImage(jsImg, x - 15 / 2, y - 15 / 2);
     context##closePath();
   | None => ()
@@ -78,8 +78,8 @@ let draw_debug = (canvas, game) => {
   let context =
     Dom_html.canvasRenderingContext2DToJsObj(canvas##getContext("2d"));
   ignore @@ context##beginPath();
-  context##strokeStyle#="#ff0066";
-  context##lineWidth#=3;
+  context##strokeStyle #= "#ff0066";
+  context##lineWidth #= 3;
   ignore @@ context##rect(1300, 0, 150, 100);
   ignore @@ context##stroke();
   ignore @@ context##closePath();
@@ -109,8 +109,8 @@ let draw_boundary = (canvas, constants) => {
   let context =
     Dom_html.canvasRenderingContext2DToJsObj(canvas##getContext("2d"));
   ignore @@ context##beginPath();
-  context##strokeStyle#="#000000";
-  context##lineWidth#=3;
+  context##strokeStyle #= "#000000";
+  context##lineWidth #= 3;
   ignore @@ context##rect(0, 0, windowWidth, windowHeight);
   ignore @@ context##stroke();
   context##closePath();
@@ -129,16 +129,16 @@ let draw_grid = (canvas, grid, {tileSize}) => {
       (
         switch (tile) {
         | Empty =>
-          context##strokeStyle#="#D3D3D3";
-          context##lineWidth#=1;
+          context##strokeStyle #= "#D3D3D3";
+          context##lineWidth #= 1;
           ignore @@
           context##rect(x * tileSize, y * tileSize, tileSize, tileSize);
         | Block =>
-          context##strokeStyle#="#000000";
+          context##strokeStyle #= "#000000";
           ignore @@
           context##fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
         | LeftWall =>
-          context##strokeStyle#="#000000";
+          context##strokeStyle #= "#000000";
           ignore @@
           context##fillRect(
             x * tileSize,
@@ -147,7 +147,7 @@ let draw_grid = (canvas, grid, {tileSize}) => {
             tileSize,
           );
         | RightWall =>
-          context##strokeStyle#="#000000";
+          context##strokeStyle #= "#000000";
           ignore @@
           context##fillRect(
             x * tileSize + tileSize / 2,
@@ -178,7 +178,7 @@ let draw_game = (canvas, game, currentState, constants) => {
   ignore @@ clear_canvas(canvas);
   ignore @@ draw_actor(canvas, snake, memberLength, memberWidth);
   ignore @@ draw_prey(canvas, spawn);
-  ignore @@ draw_debug(canvas, game);
+  /*  ignore @@ draw_debug(canvas, game);
+      ignore @@ draw_grid(canvas, grid, constants);*/
   ignore @@ draw_boundary(canvas, constants);
-  ignore @@ draw_grid(canvas, grid, constants);
 };

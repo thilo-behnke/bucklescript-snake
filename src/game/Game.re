@@ -6,7 +6,12 @@ open Draw;
 open Constants;
 open Levels;
 
-let currentState = {direction: Right, reset: false, isRunning: true, level: Levels.load_level(1)};
+let currentState = {
+  direction: Right,
+  reset: false,
+  isRunning: true,
+  level: Levels.load_level(1),
+};
 
 let initialGame = {
   state: Going,
@@ -18,7 +23,8 @@ let initialGame = {
 let getTimeStamp = () => Dom_html.performanceNow(Dom_html.performance);
 
 let rec gameLoop = (t: float, currentGame: game) => {
-  let newGame = Director.updateGame(t, currentGame, currentState, constantsState);
+  let newGame =
+    Director.updateGame(t, currentGame, currentState, constantsState);
 
   let canvas = load_canvas("canvas");
   let _ = draw_game(canvas, newGame, currentState, constantsState);
@@ -89,9 +95,17 @@ let make = _children => {
   ...component,
   render: self =>
     <div>
-      <button onClick={self.handle(resetGame)}> {ReasonReact.string("Reset Game")} </button>
-      <button onClick={self.handle(changeLevel(1))}> {ReasonReact.string("1")} </button>
-      <button onClick={self.handle(changeLevel(2))}> {ReasonReact.string("2")} </button>
-      <button onClick={self.handle(changeLevel(3))}> {ReasonReact.string("3")} </button>
+      <button onClick={self.handle(resetGame)}>
+        {ReasonReact.string("Reset Game")}
+      </button>
+      <button onClick={self.handle(changeLevel(1))}>
+        {ReasonReact.string("1")}
+      </button>
+      <button onClick={self.handle(changeLevel(2))}>
+        {ReasonReact.string("2")}
+      </button>
+      <button onClick={self.handle(changeLevel(3))}>
+        {ReasonReact.string("3")}
+      </button>
     </div>,
 };
