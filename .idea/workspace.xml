@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5675435-4c7f-4812-9c09-d9ab41d22333" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/game/Director.ml" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Director.ml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webpack/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +111,7 @@
       <workItem from="1538930479884" duration="1101000" />
       <workItem from="1538941750072" duration="8398000" />
       <workItem from="1539074859624" duration="9336000" />
-      <workItem from="1585344894717" duration="3007000" />
+      <workItem from="1585344894717" duration="4126000" />
     </task>
     <servers />
   </component>
@@ -116,17 +119,21 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="498" height="446" key="SwitcherDM" timestamp="1585347874410">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1585348819438">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585347874410" />
-    <state x="641" y="263" width="704" height="578" key="find.popup" timestamp="1585347414828">
+    <state width="498" height="446" key="SwitcherDM/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585348819438" />
+    <state x="689" y="205" width="599" height="695" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1585347988826">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="641" y="263" width="704" height="578" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585347414828" />
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1585347637177">
+    <state x="689" y="205" width="599" height="695" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585347988826" />
+    <state x="641" y="263" width="704" height="578" key="find.popup" timestamp="1585348538042">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585347637177" />
+    <state x="641" y="263" width="704" height="578" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585348538042" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1585348616335">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1585348616335" />
   </component>
 </project>

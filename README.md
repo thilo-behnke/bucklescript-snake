@@ -10,3 +10,7 @@ npm install (installs dependencies)
 # Use in Electron
 - npm run build
 - npm run start
+
+# Demo
+
+![](doc/demo.gif)
