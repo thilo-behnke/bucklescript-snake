@@ -78,25 +78,18 @@ let updateGame t oldGame mutableState constants =
     | (_,Block )::xs -> getAllowedSpawningPositions xs
     | ((gridX,gridY),Empty )::xs ->
         let x = gridX * tileSize in
-        let y = gridY * tileSize in (x, (y + (tileSize / 2))) ::
-          ((x + (tileSize / 2)), y) ::
+        let y = gridY * tileSize in
           ((x + (tileSize / 2)), (y + (tileSize / 2))) ::
-          ((x + (tileSize / 2)), (y + tileSize)) ::
-          ((x + tileSize), (y + (tileSize / 2))) ::
           (getAllowedSpawningPositions xs)
     | ((gridX,gridY),LeftWall )::xs ->
         let x = gridX * tileSize in
-        let y = gridY * tileSize in ((x + (tileSize / 2)), y) ::
+        let y = gridY * tileSize in
           ((x + (tileSize / 2)), (y + (tileSize / 2))) ::
-          ((x + (tileSize / 2)), (y + tileSize)) ::
-          ((x + tileSize), (y + (tileSize / 2))) ::
           (getAllowedSpawningPositions xs)
     | ((gridX,gridY),RightWall )::xs ->
         let x = gridX * tileSize in
-        let y = gridY * tileSize in ((x + (tileSize / 2)), y) ::
-          ((x + (tileSize / 2)), y) ::
+        let y = gridY * tileSize in
           ((x + (tileSize / 2)), (y + (tileSize / 2))) ::
-          ((x + (tileSize / 2)), (y + tileSize)) ::
           (getAllowedSpawningPositions xs) in
   let spawnPrey seed =
     let _ = Random.init @@ seed in
