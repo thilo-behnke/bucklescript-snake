@@ -16,7 +16,7 @@ let currentState = {
 let initialGame = {
   state: Going,
   eaten: [],
-  snake: Actor.Snake.init(400, Right, constantsState.memberLength),
+  snake: Actor.Snake.init(100, Right, constantsState.memberLength),
   spawn: None,
 };
 
