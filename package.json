@@ -19,7 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "bs-platform": "^4.0.6",
-    "electron": "^3.0.2",
+    "electron": "^13.6.6",
     "electron-packager": "^12.2.0",
     "electron-winstaller": "^2.7.0",
     "file-loader": "^2.0.0",
